@@ -1,42 +1,23 @@
 # Qriyo — Free QR Code Generator
 
-Qriyo is a lightweight, responsive QR code generator for creating customizable QR codes from text or URLs.
+**Qriyo** is a free, lightweight online QR code generator for creating customizable QR codes from text and URLs.
+
+🌐 **Live Demo:** https://mdabdullah21.github.io/qriyo-qr-generator/
 
 ## Features
-- Generate QR codes from text or URLs
-- Adjustable QR size
-- QR and background color controls
+- Create QR codes from text or URLs
+- Custom QR and background colors
+- Multiple QR sizes
 - Error correction levels
 - Margin control
-- Download QR codes as PNG
+- Download as PNG
 - Responsive design
-- Client-side generation
+- Client-side generation — input is not uploaded to a server
 
-## Live Demo with GitHub Pages
-
-1. Create a GitHub repository, for example `qriyo-qr-generator`.
-2. Upload `index.html`.
-3. Open **Settings → Pages**.
-4. Select **Deploy from a branch**, choose `main` and `/root`.
-5. Save and wait for GitHub Pages to publish.
-
-> Update the canonical URL and Open Graph URL inside `index.html` to your actual GitHub Pages URL. The current placeholder is `https://qriyo.github.io/`.
+## GitHub Pages
+This project is ready for GitHub Pages. Keep `index.html` in the repository root.
 
 ## SEO
+The project includes a descriptive title, meta description, relevant keywords, canonical URL, Open Graph metadata, Twitter metadata, `robots.txt`, and `sitemap.xml`.
 
-The page includes:
-- SEO title and meta description
-- Relevant QR-code search keywords
-- Canonical URL
-- Open Graph metadata
-- Twitter card metadata
-- `robots` directive
-- Semantic HTML and responsive markup
-
-### Important
-
-SEO metadata helps search engines understand the project, but it cannot guarantee a top Google result. For better discoverability, use a descriptive GitHub repository name, a strong README, a live GitHub Pages demo, and links from relevant websites.
-
-## License
-
-Choose and add a license appropriate for your project. The included QR library is loaded from CDN and remains subject to its own license.
+**Note:** SEO metadata improves discoverability but does not guarantee Google rankings or instant indexing.

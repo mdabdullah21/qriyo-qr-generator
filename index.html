@@ -8,17 +8,21 @@
   <meta name="keywords" content="Qriyo, QR code generator, free QR code generator, online QR generator, create QR code, QR code maker, QR code PNG, customizable QR code">
   <meta name="author" content="Qriyo">
   <meta name="robots" content="index, follow, max-image-preview:large">
-  <link rel="canonical" href="https://qriyo.github.io/">
+  <link rel="canonical" href="https://mdabdullah21.github.io/qriyo-qr-generator/">
   <meta name="theme-color" content="#635bff">
+
   <meta property="og:type" content="website">
   <meta property="og:title" content="Qriyo – Free QR Code Generator">
   <meta property="og:description" content="Create customizable QR codes instantly with Qriyo. Generate, customize, and download QR codes for free.">
-  <meta property="og:url" content="https://qriyo.github.io/">
+  <meta property="og:url" content="https://mdabdullah21.github.io/qriyo-qr-generator/">
   <meta property="og:site_name" content="Qriyo">
+
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Qriyo – Free QR Code Generator">
   <meta name="twitter:description" content="Create customizable QR codes instantly with Qriyo.">
+
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23635bff'/%3E%3Cpath fill='white' d='M20 20h25v25H20zm30 0h25v25H50zM20 50h25v25H20zm37 0h8v8h-8zm10 10h8v15h-8zm-20 0h15v8H47zm0 10h8v5h-8z'/%3E%3C/svg%3E">
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
     *{box-sizing:border-box}
@@ -78,7 +82,7 @@
     <section class="preview">
       <div id="qrcode"></div><div class="status" id="status">Ready</div>
       <p class="hint">Generated locally in your browser. Your text is not uploaded.</p>
-      <button class="primary" id="download" onclick="downloadQR()" style="margin-top:16px;width:min(280px,100%)">Download PNG</button>
+      <button class="primary" onclick="downloadQR()" style="margin-top:16px;width:min(280px,100%)">Download PNG</button>
     </section>
   </main>
   <footer>© <span id="year"></span> Qriyo · Free online QR code generator</footer>
@@ -86,11 +90,11 @@
 <script>
 let qr;
 function generateQR(){
-  const text=document.getElementById('data').value.trim(), box=document.getElementById('qrcode');
-  const size=parseInt(document.getElementById('size').value), dark=document.getElementById('dark').value, light=document.getElementById('light').value;
+  const text=document.getElementById('data').value.trim(),box=document.getElementById('qrcode');
+  const size=parseInt(document.getElementById('size').value),dark=document.getElementById('dark').value,light=document.getElementById('light').value;
   if(!text){document.getElementById('status').textContent='Please enter text or a URL.';return}
-  box.innerHTML=''; qr=new QRCode(box,{text,width:size,height:size,colorDark:dark,colorLight:light,correctLevel:QRCode.CorrectLevel[document.getElementById('level').value]});
-  box.style.padding=document.getElementById('margin').value+'px'; document.getElementById('status').textContent='QR code generated successfully.';
+  box.innerHTML='';qr=new QRCode(box,{text,width:size,height:size,colorDark:dark,colorLight:light,correctLevel:QRCode.CorrectLevel[document.getElementById('level').value]});
+  box.style.padding=document.getElementById('margin').value+'px';document.getElementById('status').textContent='QR code generated successfully.';
 }
 function downloadQR(){
   const canvas=document.querySelector('#qrcode canvas');
@@ -99,7 +103,7 @@ function downloadQR(){
 }
 function clearAll(){document.getElementById('data').value='';document.getElementById('qrcode').innerHTML='';document.getElementById('status').textContent='Cleared'}
 document.getElementById('margin').addEventListener('input',e=>{document.getElementById('marginValue').textContent=e.target.value+' px';if(qr)document.getElementById('qrcode').style.padding=e.target.value+'px'});
-document.getElementById('year').textContent=new Date().getFullYear(); generateQR();
+document.getElementById('year').textContent=new Date().getFullYear();generateQR();
 </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://qriyo.github.io/sitemap.xml
+Sitemap: https://mdabdullah21.github.io/qriyo-qr-generator/sitemap.xml
