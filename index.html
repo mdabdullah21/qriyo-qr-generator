@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Qriyo – Free QR Code Generator | Create & Download QR Codes</title>
+  <meta name="description" content="Qriyo is a free online QR code generator. Create customizable QR codes for URLs and text, change colors and size, and download your QR code as a PNG.">
+  <meta name="keywords" content="Qriyo, QR code generator, free QR code generator, online QR generator, create QR code, QR code maker, QR code PNG, customizable QR code">
+  <meta name="author" content="Qriyo">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://qriyo.github.io/">
+  <meta name="theme-color" content="#635bff">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Qriyo – Free QR Code Generator">
+  <meta property="og:description" content="Create customizable QR codes instantly with Qriyo. Generate, customize, and download QR codes for free.">
+  <meta property="og:url" content="https://qriyo.github.io/">
+  <meta property="og:site_name" content="Qriyo">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Qriyo – Free QR Code Generator">
+  <meta name="twitter:description" content="Create customizable QR codes instantly with Qriyo.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23635bff'/%3E%3Cpath fill='white' d='M20 20h25v25H20zm30 0h25v25H50zM20 50h25v25H20zm37 0h8v8h-8zm10 10h8v15h-8zm-20 0h15v8H47zm0 10h8v5h-8z'/%3E%3C/svg%3E">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    *{box-sizing:border-box}
+    :root{--brand:#635bff;--text:#172033;--muted:#697386;--border:#e7eaf0}
+    body{margin:0;min-height:100vh;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(135deg,#f7f9fc,#eef2ff);color:var(--text);display:flex;align-items:center;justify-content:center;padding:28px}
+    .app{width:min(980px,100%);background:#fff;border:1px solid var(--border);border-radius:24px;box-shadow:0 20px 60px rgba(24,35,60,.12);overflow:hidden}
+    header{padding:28px 32px;border-bottom:1px solid #edf0f5;display:flex;align-items:center;gap:14px}
+    .logo{width:48px;height:48px;border-radius:14px;background:var(--brand);display:grid;place-items:center;color:white;font-weight:900;font-size:22px;box-shadow:0 8px 20px rgba(99,91,255,.25)}
+    header h1{margin:0;font-size:28px;letter-spacing:-.6px} header p{margin:7px 0 0;color:var(--muted)}
+    main{display:grid;grid-template-columns:1.15fr .85fr;gap:30px;padding:32px}
+    label{display:block;font-size:14px;font-weight:700;margin:0 0 8px}
+    textarea,select,input[type=color]{width:100%;border:1px solid #dce1ea;border-radius:12px;background:#fff;outline:none}
+    textarea{min-height:145px;padding:14px;resize:vertical;font:inherit}
+    textarea:focus,select:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(99,91,255,.1)}
+    select{height:46px;padding:0 12px}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+    .control{margin-top:18px}
+    input[type=color]{height:46px;padding:5px;cursor:pointer}
+    input[type=range]{width:100%;accent-color:var(--brand)}
+    .range-line{display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+    .actions{display:flex;gap:10px;margin-top:22px}
+    button{border:0;border-radius:12px;padding:13px 18px;font-weight:800;cursor:pointer;font-size:14px}
+    .primary{background:var(--brand);color:white;flex:1}.secondary{background:#eef0f5;color:#273149}
+    button:hover{filter:brightness(.97)}
+    .preview{border:1px solid #e8ebf1;border-radius:18px;background:#fafbfe;min-height:430px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:25px}
+    #qrcode{background:#fff;border-radius:12px;display:flex;align-items:center;justify-content:center}
+    #qrcode canvas,#qrcode img{max-width:100%;height:auto}
+    .hint{color:#7b8494;font-size:13px;margin:18px 0 0;text-align:center}.status{text-align:center;font-size:13px;color:#4f5b70;min-height:18px;margin-top:12px}
+    footer{text-align:center;padding:0 28px 25px;color:#8790a0;font-size:12px}
+    @media(max-width:760px){main{grid-template-columns:1fr;padding:22px}.preview{min-height:350px}header{padding:24px}.row{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="logo" aria-hidden="true">Q</div>
+    <div><h1>Qriyo</h1><p>Free QR Code Generator — create, customize & download.</p></div>
+  </header>
+  <main>
+    <section>
+      <label for="data">Text or URL</label>
+      <textarea id="data" aria-label="Text or URL">https://example.com</textarea>
+      <div class="row">
+        <div class="control"><label for="size">Size</label><select id="size"><option value="180">180 × 180</option><option value="220" selected>220 × 220</option><option value="280">280 × 280</option><option value="320">320 × 320</option></select></div>
+        <div class="control"><label for="level">Error correction</label><select id="level"><option value="L">Low</option><option value="M" selected>Medium</option><option value="Q">Quartile</option><option value="H">High</option></select></div>
+      </div>
+      <div class="row">
+        <div class="control"><label for="dark">QR color</label><input type="color" id="dark" value="#111827"></div>
+        <div class="control"><label for="light">Background</label><input type="color" id="light" value="#ffffff"></div>
+      </div>
+      <div class="control">
+        <label for="margin">Margin</label><input type="range" id="margin" min="0" max="30" value="10">
+        <div class="range-line"><span>Compact</span><strong id="marginValue">10 px</strong><span>Wide</span></div>
+      </div>
+      <div class="actions"><button class="primary" onclick="generateQR()">Generate QR Code</button><button class="secondary" onclick="clearAll()">Clear</button></div>
+    </section>
+    <section class="preview">
+      <div id="qrcode"></div><div class="status" id="status">Ready</div>
+      <p class="hint">Generated locally in your browser. Your text is not uploaded.</p>
+      <button class="primary" id="download" onclick="downloadQR()" style="margin-top:16px;width:min(280px,100%)">Download PNG</button>
+    </section>
+  </main>
+  <footer>© <span id="year"></span> Qriyo · Free online QR code generator</footer>
+</div>
+<script>
+let qr;
+function generateQR(){
+  const text=document.getElementById('data').value.trim(), box=document.getElementById('qrcode');
+  const size=parseInt(document.getElementById('size').value), dark=document.getElementById('dark').value, light=document.getElementById('light').value;
+  if(!text){document.getElementById('status').textContent='Please enter text or a URL.';return}
+  box.innerHTML=''; qr=new QRCode(box,{text,width:size,height:size,colorDark:dark,colorLight:light,correctLevel:QRCode.CorrectLevel[document.getElementById('level').value]});
+  box.style.padding=document.getElementById('margin').value+'px'; document.getElementById('status').textContent='QR code generated successfully.';
+}
+function downloadQR(){
+  const canvas=document.querySelector('#qrcode canvas');
+  if(!canvas){document.getElementById('status').textContent='Generate a QR code first.';return}
+  const a=document.createElement('a');a.download='qriyo-qr-code.png';a.href=canvas.toDataURL('image/png');a.click();
+}
+function clearAll(){document.getElementById('data').value='';document.getElementById('qrcode').innerHTML='';document.getElementById('status').textContent='Cleared'}
+document.getElementById('margin').addEventListener('input',e=>{document.getElementById('marginValue').textContent=e.target.value+' px';if(qr)document.getElementById('qrcode').style.padding=e.target.value+'px'});
+document.getElementById('year').textContent=new Date().getFullYear(); generateQR();
+</script>
+</body>
+</html>
